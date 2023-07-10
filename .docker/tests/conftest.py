@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# pylint: disable=missing-module-docstring, redefined-outer-name
+# pylint: disable=missing-docstring, redefined-outer-name
 import json
 from pathlib import Path
 
@@ -12,7 +12,7 @@ def variant(request):
 
 
 @pytest.fixture(scope='session')
-def docker_compose_file(pytestconfig, variant): # pylint: unused-argument
+def docker_compose_file(pytestconfig, variant):  # pylint: disable=unused-argument
     return f'docker-compose.{variant}.yml'
 
 
@@ -34,7 +34,7 @@ def container_user():
 
 
 @pytest.fixture
-def aiida_exec(docker_compose):
+def aiida_exec(docker_compose): 
 
     def execute(command, user=None, **kwargs):
         if user:

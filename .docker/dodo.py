@@ -83,7 +83,8 @@ def task_build():
                     ORGANIZATION=organization,
                     PLATFORMS=platforms,
                 )
-            ), encoding='utf-8',
+            ),
+            encoding='utf-8',
         )
 
     return {
