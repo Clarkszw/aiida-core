@@ -75,8 +75,8 @@ jobs:
             architecture: amd64
             registry: docker.io
         secrets:
-            REGISTRY_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-            REGISTRY_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+            REGISTRY_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+            REGISTRY_TOKEN: ${{ secrets.DOCKER_TOKEN }}
         needs: [amd64-build]
 
     arm64-push-dockerhub:
@@ -86,8 +86,8 @@ jobs:
             architecture: arm64
             registry: docker.io
         secrets:
-            REGISTRY_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-            REGISTRY_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+            REGISTRY_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+            REGISTRY_TOKEN: ${{ secrets.DOCKER_TOKEN }}
         needs: [arm64-build]
 
     merge-tags-dockerhub:
@@ -96,6 +96,6 @@ jobs:
         with:
             registry: docker.io
         secrets:
-            REGISTRY_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-            REGISTRY_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+            REGISTRY_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+            REGISTRY_TOKEN: ${{ secrets.DOCKER_TOKEN }}
         needs: [amd64-push-dockerhub, arm64-push-dockerhub]
