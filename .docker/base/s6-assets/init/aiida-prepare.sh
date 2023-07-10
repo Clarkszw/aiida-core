@@ -63,14 +63,14 @@ if [[ ${NEED_SETUP_PROFILE} == true ]]; then
       exit 1
     fi
 
-    verdi computer show ${computer_name} > /dev/null || verdi computer setup \
+    verdi computer show ${computer_name} &> /dev/null || verdi computer setup \
         --non-interactive                                               \
         --label "${computer_name}"                                      \
-        --description "this computer"                                   \
+        --description "container computer"                                   \
         --hostname "${computer_name}"                                   \
         --transport core.local                                          \
         --scheduler core.direct                                         \
-        --work-dir /home/${MAMBA_USER}/aiida_run/                          \
+        --work-dir /home/${SYSTEM_USER}/aiida_run/                          \
         --mpirun-command "mpirun -np {tot_num_mpiprocs}"                \
         --mpiprocs-per-machine ${LOCALHOST_MPI_PROCS_PER_MACHINE} &&    \
     verdi computer configure core.local "${computer_name}" \
