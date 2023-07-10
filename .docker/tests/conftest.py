@@ -34,7 +34,7 @@ def container_user():
 
 
 @pytest.fixture
-def aiida_exec(docker_compose): 
+def aiida_exec(docker_compose):
 
     def execute(command, user=None, **kwargs):
         if user:
