@@ -31,6 +31,8 @@ jobs:
             run:
                 shell: bash
                 working-directory: .docker
+        permissions:
+            packages: write
 
         steps:
             - name: Checkout Repo ⚡️

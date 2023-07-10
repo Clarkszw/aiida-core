@@ -3,4 +3,4 @@
 with-contenv
 
 foreground { s6-echo "Calling /etc/init/rabbitmq.sh" }
-mamba run -n aiida-core-services rabbitmq-server
+rabbitmq-server

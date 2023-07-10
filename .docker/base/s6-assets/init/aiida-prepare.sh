@@ -34,6 +34,15 @@ if [[ ${NEED_SETUP_PROFILE} == true ]]; then
         --institution "${AIIDA_USER_INSTITUTION}"    \
         --config "${AIIDA_PROFILE_PATH}"
 
+    # Supress verdi version warning because we are using a development version
+    verdi config set warnings.development_version False
+
+    # Supress rabbitmq version warning
+    # If it is built using RMQ version > 3.8.15 (as we did for the `aiida-core` image) which has the issue as described in
+    # https://github.com/aiidateam/aiida-core/wiki/RabbitMQ-version-to-use
+    # We explicitly set consumer_timeout to 100 hours in /etc/rabbitmq/rabbitmq.conf
+    verdi config set warnings.rabbitmq_version False
+
     # Setup and configure local computer.
     computer_name=localhost
 
@@ -54,7 +63,7 @@ if [[ ${NEED_SETUP_PROFILE} == true ]]; then
       exit 1
     fi
 
-    verdi computer show ${computer_name} || verdi computer setup \
+    verdi computer show ${computer_name} > /dev/null || verdi computer setup \
         --non-interactive                                               \
         --label "${computer_name}"                                      \
         --description "this computer"                                   \

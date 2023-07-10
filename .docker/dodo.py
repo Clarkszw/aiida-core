@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# pylint: disable=missing-module-docstring
 import json
 from pathlib import Path
 import platform
@@ -82,7 +83,7 @@ def task_build():
                     ORGANIZATION=organization,
                     PLATFORMS=platforms,
                 )
-            )
+            ), encoding='utf-8',
         )
 
     return {

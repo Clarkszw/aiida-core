@@ -9,3 +9,8 @@ All commands `build`, `tests`, and `up` will use the locally detected platform a
 However, you can also specify a custom platform or version with the `--platform` and `--version` parameters, example: `doit build --arch=amd64 --version=my-version`.
 
 You can specify target stacks to build with `--target`, example: `doit build --target base --target base`.
+
+### Trigger a build on ghcr.io and dockerhub
+
+Only the PR open to the organization repository will trigger a build on ghcr.io.
+Push to dockerhub is triggered when making a release on github.

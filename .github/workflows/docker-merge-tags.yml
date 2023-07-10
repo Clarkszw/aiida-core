@@ -21,6 +21,8 @@ jobs:
         strategy:
           matrix:
               image: ["base", "aiida-core"]
+        permissions:
+            packages: write
 
         steps:
             - name: Checkout Repo ⚡️

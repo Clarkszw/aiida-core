@@ -36,9 +36,9 @@ This image contains a fully pre-configured AiiDA environment which makes it part
       .. parsed-literal::
 
          $ docker run -it aiidateam/aiida-core:latest bash
-      
+
       You can specify a name for the container with the ``--name`` option for easier reference later on:
-      
+
       .. parsed-literal::
 
          $ docker run -it --name aiida-container aiidateam/aiida-core:latest bash

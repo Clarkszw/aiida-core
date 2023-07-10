@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# pylint: disable=missing-module-docstring, redefined-outer-name
 import json
 from pathlib import Path
 
@@ -11,12 +12,13 @@ def variant(request):
 
 
 @pytest.fixture(scope='session')
-def docker_compose_file(pytestconfig, variant):
+def docker_compose_file(pytestconfig, variant): # pylint: unused-argument
     return f'docker-compose.{variant}.yml'
 
 
 @pytest.fixture(scope='session')
 def docker_compose(docker_services):
+    # pylint: disable=protected-access
     return docker_services._docker_compose
 
 
@@ -46,7 +48,7 @@ def aiida_exec(docker_compose):
 
 @pytest.fixture(scope='session')
 def _build_config():
-    return json.loads(Path('build.json').read_text())['variable']
+    return json.loads(Path('build.json').read_text(encoding='utf-8'))['variable']
 
 
 @pytest.fixture(scope='session')

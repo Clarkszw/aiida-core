@@ -9,7 +9,7 @@ chmod 400 "/home/${SYSTEM_USER}/.erlang.cookie" || echo "erlang cookie not creat
 
 # Set base directory for RabbitMQ to persist its data. This needs to be set to a folder in the system user's home
 # directory as that is the only folder that is persisted outside of the container.
-RMQ_ETC_DIR="/opt/conda/envs/aiida-core-services/rabbitmq_server-${RMQ_VERSION}/etc/rabbitmq"
+RMQ_ETC_DIR="/opt/rabbitmq_server-${RMQ_VERSION}/etc/rabbitmq"
 echo MNESIA_BASE="${RABBITMQ_DATA_DIR}" >> "${RMQ_ETC_DIR}/rabbitmq-env.conf"
 echo LOG_BASE="${RABBITMQ_DATA_DIR}/log" >> "${RMQ_ETC_DIR}/rabbitmq-env.conf"
 

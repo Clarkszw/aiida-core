@@ -12,14 +12,12 @@ ARG RMQ_VERSION
 ENV PGSQL_VERSION=${PGSQL_VERSION}
 ENV RMQ_VERSION=${RMQ_VERSION}
 
-RUN mamba create -p /opt/conda/envs/aiida-core-services --yes \
+RUN mamba install --yes \
      --channel conda-forge \
      postgresql=${PGSQL_VERSION} && \
      mamba clean --all -f -y && \
      fix-permissions "${CONDA_DIR}" && \
      fix-permissions "/home/${SYSTEM_USER}"
-
-ENV MAMBA_RUN="mamba run -n aiida-core-services"
 
 # Install erlang.
 RUN apt-get update --yes && \
@@ -31,9 +29,8 @@ RUN apt-get update --yes && \
      wget -c --no-check-certificate https://github.com/rabbitmq/rabbitmq-server/releases/download/v${RMQ_VERSION}/rabbitmq-server-generic-unix-${RMQ_VERSION}.tar.xz && \
      tar -xf rabbitmq-server-generic-unix-${RMQ_VERSION}.tar.xz && \
      rm rabbitmq-server-generic-unix-${RMQ_VERSION}.tar.xz && \
-     mv rabbitmq_server-${RMQ_VERSION} /opt/conda/envs/aiida-core-services/ && \
-     ln -sf /opt/conda/envs/aiida-core-services/rabbitmq_server-${RMQ_VERSION}/sbin/* /opt/conda/envs/aiida-core-services/bin/ && \
-     fix-permissions "${CONDA_DIR}"
+     ln -sf /opt/rabbitmq_server-${RMQ_VERSION}/sbin/* /usr/local/bin/ && \
+     fix-permissions /opt/rabbitmq_server-${RMQ_VERSION}
 
 # s6-overlay to start services
 COPY --chown="${SYSTEM_UID}:${SYSTEM_GID}" s6-assets/config-quick-setup.yaml "/aiida/assets/config-quick-setup.yaml"

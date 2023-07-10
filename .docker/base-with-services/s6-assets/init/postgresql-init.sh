@@ -3,7 +3,7 @@
 # make DB directory, if not existent
 if [ ! -d /home/${SYSTEM_USER}/.postgresql ]; then
    mkdir /home/${SYSTEM_USER}/.postgresql
-   ${MAMBA_RUN} initdb -D /home/${SYSTEM_USER}/.postgresql
+   initdb -D /home/${SYSTEM_USER}/.postgresql
    echo "unix_socket_directories = '/tmp'" >> /home/${SYSTEM_USER}/.postgresql/postgresql.conf
 fi
 
@@ -15,7 +15,7 @@ chmod g-rwxs /home/${SYSTEM_USER}/.postgresql -R
 
 # stores return value in $?
 running=true
-${MAMBA_RUN} ${PSQL_STATUS_CMD} || running=false
+${PSQL_STATUS_CMD} > /dev/null 2>&1 || running=false
 
 # Postgresql was probably not shutdown properly. Cleaning up the mess...
 if ! $running ; then
