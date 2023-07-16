@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 FROM base
 
-LABEL maintainer="AiiDAlab Team <aiidalab@materialscloud.org>"
+LABEL maintainer="AiiDA Team <developers@aiida.net>"
 
 USER root
 WORKDIR /opt/
