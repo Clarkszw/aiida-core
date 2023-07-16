@@ -121,5 +121,3 @@ def task_tests():
         'params': [_REGISTRY_PARAM, _VERSION_PARAM],
         'verbosity': 2,
     }
-
-
