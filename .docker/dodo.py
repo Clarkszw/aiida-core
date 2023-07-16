@@ -123,8 +123,3 @@ def task_tests():
     }
 
 
-
-
-def task_down():
-    """Stop AiiDAlab server."""
-    return {'actions': ['docker-compose down'], 'verbosity': 2}
