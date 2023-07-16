@@ -123,35 +123,6 @@ def task_tests():
     }
 
 
-def task_up():
-    """Start AiiDAlab server for testing."""
-    return {
-        'actions': [
-            'AIIDALAB_PORT=%(port)i REGISTRY=%(registry)s VERSION=%(version)s '
-            'docker-compose -f docker-compose.%(target)s.yml up'
-        ],
-        'params': [
-            {
-                'name': 'port',
-                'short': 'p',
-                'long': 'port',
-                'type': int,
-                'default': 8888,
-                'help': 'Specify the AiiDAlab host port.',
-            },
-            {
-                'name': 'target',
-                'short': 't',
-                'long': 'target',
-                'type': str,
-                'default': 'base-with-services',
-                'help': 'Specify the target to run.',
-            },
-            _REGISTRY_PARAM,
-            _VERSION_PARAM,
-        ],
-        'verbosity': 2,
-    }
 
 
 def task_down():
