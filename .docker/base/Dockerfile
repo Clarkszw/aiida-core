@@ -7,7 +7,7 @@ ARG BASE=ubuntu:22.04
 
 FROM $BASE
 
-LABEL maintainer="AiiDAlab Team <aiidalab@materialscloud.org>"
+LABEL maintainer="AiiDA Team <developers@aiida.net>"
 
 ARG SYSTEM_USER="aiida"
 ARG SYSTEM_UID="1000"
