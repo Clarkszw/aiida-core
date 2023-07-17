@@ -61,12 +61,11 @@ This image contains a fully pre-configured AiiDA environment which makes it part
 
    .. grid-item-card:: Persist data across different containers
 
-      If you stop the container and start it again, any data you created will persist.
+      If you stop the container (`docker stop` or simply `Ctrl+D` from container) and start it again, any data you created will persist.
 
       .. code-block:: console
 
-         $ docker stop aiida-container
-         $ docker start aiida-container
+         $ docker start -i aiida-container
 
       However, if you remove the container, **all data will be removed as well**.
 
