@@ -37,6 +37,10 @@ RUN apt-get update --yes && \
     ca-certificates \
     locales \
     sudo \
+    # development tools
+    git \
+    openssh-client \
+    vim \
     # the gcc compiler need to build some python packages e.g. psutil and pymatgen
     build-essential \
     wget && \
