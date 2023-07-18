@@ -140,6 +140,10 @@ RUN set -x && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${SYSTEM_USER}"
 
+# Add ~/.local/bin to PATH where the dependencies get installed via pip
+# This require the package installed with `--user` flag in pip
+ENV PATH=${PATH}:/home/${NB_USER}/.local/bin
+
 # Switch to root to install AiiDA and set AiiDA as service
 # Install AiiDA from source code
 USER root

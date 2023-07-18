@@ -90,6 +90,8 @@ This image contains a fully pre-configured AiiDA environment which makes it part
 
       Starting the container with the above command, ensures that any data stored in the ``/home/aiida`` path within the container is stored in the ``conatiner-home-data`` volume and therefore persists even if the container is removed.
 
+      To persistently store the python packages installed in the container, use `--user` flag when installing packages with pip, the packages will be installed in the ``/home/aiida/.local`` path which is mounted to the ``container-home-data`` volume.
+
       You can also mount a local directory instead of a volume and to other container path, please refer to the `Docker documentation <https://docs.docker.com/storage/bind-mounts/>`__ for more information.
 
       .. button-ref:: intro:get_started:next
